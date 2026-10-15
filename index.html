@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwapSphere | Campus Swap &amp; Sell</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#home" class="logo"
+        ><img src="img/sslogo.png" alt="SwapSphere logo"
+      /></a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+        &#9776;
+      </button>
+      <ul class="navbar" id="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#howitworks">How It Works</a></li>
+        <li><a href="#myswaps">My Swaps</a></li>
+        <li><a href="#wishlist">WishList</a></li>
+      </ul>
+      <div class="header-btn">
+        <a href="#">Sign In</a>
+        <a href="#">Sign Up</a>
+      </div>
+    </header>
+
+    <section class="home-section" id="home">
+      <img src="img/bgimg1.png" alt="Students on campus" />
+      <div class="hero-content">
+        <h1>Swap. Sell. Save on campus.</h1>
+        <p>
+          Give your unused books, gadgets and furniture a second life, and find
+          what you need from students nearby.
+        </p>
+        <a href="#explore" class="btn">Start Swapping</a>
+      </div>
+    </section>
+
+    <!-- CATEGORY IMAGES: replace the files in img/categories/ -->
+    <section class="section" id="categories">
+      <h2 class="title">Browse by category</h2>
+      <div class="cat-grid">
+        <button class="cat" onclick="selectCategory('Books')">
+          <img src="img/categories/books.png" alt="" loading="lazy" />
+          <span>Books</span>
+        </button>
+        <button class="cat" onclick="selectCategory('Electronics')">
+          <img src="img/categories/electronics.jpeg" alt="" loading="lazy" />
+          <span>Electronics</span>
+        </button>
+        <button class="cat" onclick="selectCategory('Furniture')">
+          <img src="img/categories/furniture.jpeg" alt="" loading="lazy" />
+          <span>Furniture</span>
+        </button>
+        <button class="cat" onclick="selectCategory('Clothing')">
+          <img src="img/categories/clothing.jpeg" alt="" loading="lazy" />
+          <span>Clothing</span>
+        </button>
+        <button class="cat" onclick="selectCategory('Stationery')">
+          <img src="img/categories/stationery.jpeg" alt="" loading="lazy" />
+          <span>Stationery</span>
+        </button>
+        <button class="cat" onclick="selectCategory('Sports')">
+          <img src="img/categories/sports.jpeg" alt="" loading="lazy" />
+          <span>Sports</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FEATURED IMAGES: replace the files in img/items/ -->
+    <section class="section alt" id="featured">
+      <h2 class="title">Featured items</h2>
+      <div class="featured-gallery">
+        <a href="#explore" class="feat">
+          <img
+            src="img/items/engineering-maths.jpeg"
+            alt="Engineering Mathematics book"
+            loading="lazy"
+          />
+          <div class="feat-info">
+            <h3>Engineering Mathematics</h3>
+            <span class="tag">₹250</span>
+          </div>
+        </a>
+
+        <a href="#explore" class="feat">
+          <img
+            src="img/items/calculator.jpeg"
+            alt="Scientific calculator"
+            loading="lazy"
+          />
+          <div class="feat-info">
+            <h3>Scientific Calculator</h3>
+            <span class="tag">Swap</span>
+          </div>
+        </a>
+
+        <a href="#explore" class="feat">
+          <img
+            src="img/items/study-table.jpeg"
+            alt="Study table"
+            loading="lazy"
+          />
+          <div class="feat-info">
+            <h3>Study Table</h3>
+            <span class="tag">₹1200</span>
+          </div>
+        </a>
+
+        <a href="#explore" class="feat">
+          <img src="img/items/hoodie.jpeg" alt="College hoodie" loading="lazy" />
+          <div class="feat-info">
+            <h3>College Hoodie</h3>
+            <span class="tag">Swap</span>
+          </div>
+        </a>
+
+        <a href="#explore" class="feat">
+          <img
+            src="img/items/drawing-kit.jpeg"
+            alt="Drawing kit"
+            loading="lazy"
+          />
+          <div class="feat-info">
+            <h3>Drawing Kit</h3>
+            <span class="tag">₹300</span>
+          </div>
+        </a>
+
+        <a href="#explore" class="feat">
+          <img
+            src="img/items/cricket-bat.jpg"
+            alt="Cricket bat"
+            loading="lazy"
+          />
+          <div class="feat-info">
+            <h3>Cricket Bat</h3>
+            <span class="tag">Swap</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPLORE CARDS: images come from script.js (img/items/ folder) -->
+    <section class="section" id="explore">
+      <h2 class="title">Explore items</h2>
+      <div class="filters">
+        <input
+          type="search"
+          id="search"
+          oninput="showItems()"
+          placeholder="Search for an item..."
+        />
+        <select id="catFilter" onchange="showItems()">
+          <option value="">All categories</option>
+          <option>Books</option>
+          <option>Electronics</option>
+          <option>Furniture</option>
+          <option>Clothing</option>
+          <option>Stationery</option>
+          <option>Sports</option>
+        </select>
+        <select id="typeFilter" onchange="showItems()">
+          <option value="">Swap or sell</option>
+          <option value="Swap">Swap</option>
+          <option value="Sell">Sell</option>
+        </select>
+      </div>
+      <div class="grid" id="exploreGrid">
+        <!-- EXPLORE IMAGES: replace the files in img/items/ -->
+        <div class="card" data-id="1" data-name="Engineering Mathematics" data-cat="Books" data-type="Sell" data-price="250" data-cond="Good" data-owner="Aarav" data-email="aarav@example.com" data-phone="">
+          <button class="heart" data-id="1" onclick="toggleWish(1)">♡</button>
+          <div class="thumb">
+            <img src="img/items/engineering-maths.jpeg" alt="Engineering Mathematics" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Engineering Mathematics</h3>
+            <small>Books - Good</small>
+            <div class="card-foot"><span class="tag">₹250</span></div>
+            <button class="contact-btn" onclick="openContact(1)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="2" data-name="Scientific Calculator" data-cat="Electronics" data-type="Swap" data-price="0" data-cond="Like new" data-owner="Priya" data-email="priya@example.com" data-phone="">
+          <button class="heart" data-id="2" onclick="toggleWish(2)">♡</button>
+          <div class="thumb">
+            <img src="img/items/calculator.jpeg" alt="Scientific Calculator" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Scientific Calculator</h3>
+            <small>Electronics - Like new</small>
+            <div class="card-foot"><span class="tag">Swap</span></div>
+            <button class="contact-btn" onclick="openContact(2)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="3" data-name="Study Table" data-cat="Furniture" data-type="Sell" data-price="1200" data-cond="Good" data-owner="Rohan" data-email="rohan@example.com" data-phone="">
+          <button class="heart" data-id="3" onclick="toggleWish(3)">♡</button>
+          <div class="thumb">
+            <img src="img/items/study-table.jpeg" alt="Study Table" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Study Table</h3>
+            <small>Furniture - Good</small>
+            <div class="card-foot"><span class="tag">₹1200</span></div>
+            <button class="contact-btn" onclick="openContact(3)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="4" data-name="College Hoodie" data-cat="Clothing" data-type="Swap" data-price="0" data-cond="Like new" data-owner="Sneha" data-email="sneha@example.com" data-phone="">
+          <button class="heart" data-id="4" onclick="toggleWish(4)">♡</button>
+          <div class="thumb">
+            <img src="img/items/hoodie.jpeg" alt="College Hoodie" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>College Hoodie</h3>
+            <small>Clothing - Like new</small>
+            <div class="card-foot"><span class="tag">Swap</span></div>
+            <button class="contact-btn" onclick="openContact(4)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="5" data-name="Drawing Kit" data-cat="Stationery" data-type="Sell" data-price="300" data-cond="Good" data-owner="Karthik" data-email="karthik@example.com" data-phone="">
+          <button class="heart" data-id="5" onclick="toggleWish(5)">♡</button>
+          <div class="thumb">
+            <img src="img/items/drawing-kit.jpeg" alt="Drawing Kit" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Drawing Kit</h3>
+            <small>Stationery - Good</small>
+            <div class="card-foot"><span class="tag">₹300</span></div>
+            <button class="contact-btn" onclick="openContact(5)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="6" data-name="Cricket Bat" data-cat="Sports" data-type="Swap" data-price="0" data-cond="Fair" data-owner="Vikram" data-email="vikram@example.com" data-phone="">
+          <button class="heart" data-id="6" onclick="toggleWish(6)">♡</button>
+          <div class="thumb">
+            <img src="img/items/cricket-bat.jpeg" alt="Cricket Bat" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Cricket Bat</h3>
+            <small>Sports - Fair</small>
+            <div class="card-foot"><span class="tag">Swap</span></div>
+            <button class="contact-btn" onclick="openContact(6)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="7" data-name="Data Structures Notes" data-cat="Books" data-type="Swap" data-price="0" data-cond="Good" data-owner="Ananya" data-email="ananya@example.com" data-phone="">
+          <button class="heart" data-id="7" onclick="toggleWish(7)">♡</button>
+          <div class="thumb">
+            <img src="img/items/ds-notes.jpeg" alt="Data Structures Notes" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Data Structures Notes</h3>
+            <small>Books - Good</small>
+            <div class="card-foot"><span class="tag">Swap</span></div>
+            <button class="contact-btn" onclick="openContact(7)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="8" data-name="Bluetooth Earphones" data-cat="Electronics" data-type="Sell" data-price="600" data-cond="Like new" data-owner="Rahul" data-email="rahul@example.com" data-phone="">
+          <button class="heart" data-id="8" onclick="toggleWish(8)">♡</button>
+          <div class="thumb">
+            <img src="img/items/earphones.jpeg" alt="Bluetooth Earphones" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Bluetooth Earphones</h3>
+            <small>Electronics - Like new</small>
+            <div class="card-foot"><span class="tag">₹600</span></div>
+            <button class="contact-btn" onclick="openContact(8)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="9" data-name="Desk Lamp" data-cat="Electronics" data-type="Sell" data-price="350" data-cond="Good" data-owner="Meera" data-email="meera@example.com" data-phone="">
+          <button class="heart" data-id="9" onclick="toggleWish(9)">♡</button>
+          <div class="thumb">
+            <img src="img/items/desk-lamp.jpeg" alt="Desk Lamp" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Desk Lamp</h3>
+            <small>Electronics - Good</small>
+            <div class="card-foot"><span class="tag">₹350</span></div>
+            <button class="contact-btn" onclick="openContact(9)">Contact owner</button>
+          </div>
+        </div>
+
+        <div class="card" data-id="10" data-name="Badminton Racket" data-cat="Sports" data-type="Sell" data-price="450" data-cond="Good" data-owner="Arjun" data-email="arjun@example.com" data-phone="">
+          <button class="heart" data-id="10" onclick="toggleWish(10)">♡</button>
+          <div class="thumb">
+            <img src="img/items/badminton-racket.jpeg" alt="Badminton Racket" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Badminton Racket</h3>
+            <small>Sports - Good</small>
+            <div class="card-foot"><span class="tag">₹450</span></div>
+            <button class="contact-btn" onclick="openContact(10)">Contact owner</button>
+          </div>
+        </div>
+      </div>
+      <p class="empty" id="exploreEmpty" hidden>
+        No items match your search. Try another keyword or category.
+      </p>
+    </section>
+
+    <section class="section alt" id="wishlist">
+      <h2 class="title">Your wishlist</h2>
+      <div class="grid" id="wishGrid"></div>
+      <p class="empty" id="wishEmpty">
+        Nothing saved yet. Tap the heart on any item to save it here.
+      </p>
+    </section>
+
+    <section class="section" id="howitworks">
+      <h2 class="title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <b>1</b>
+          <h3>List</h3>
+          <p>Post an item you no longer need.</p>
+        </div>
+        <div class="step">
+          <b>2</b>
+          <h3>Browse</h3>
+          <p>Search items from students on campus.</p>
+        </div>
+        <div class="step">
+          <b>3</b>
+          <h3>Connect</h3>
+          <p>Tap Contact owner, email or WhatsApp them, and agree on a meeting spot.</p>
+        </div>
+        <div class="step">
+          <b>4</b>
+          <h3>Swap or buy</h3>
+          <p>Exchange the item and save money.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="myswaps">
+      <h2 class="title">List an item</h2>
+      <div class="list-wrap">
+        <form onsubmit="addItem(event)">
+          <p class="form-sub">Your contact details</p>
+          <label
+            >Your name<input type="text" id="fOwner" placeholder="e.g. Aarav"
+          /></label>
+          <label
+            >Email<input
+              type="email"
+              id="fEmail"
+              placeholder="e.g. aarav@college.edu"
+          /></label>
+          <label
+            >Phone / WhatsApp (optional)<input
+              type="tel"
+              id="fPhone"
+              placeholder="e.g. 9876543210"
+          /></label>
+          <p class="hint">
+            Students who want your item will use these details to contact you.
+          </p>
+          <p class="form-sub">Item details</p>
+          <label
+            >Item name<input
+              type="text"
+              id="fName"
+              placeholder="e.g. Engineering Mathematics book"
+          /></label>
+          <label
+            >Category
+            <select id="fCat">
+              <option value="">Select category</option>
+              <option>Books</option>
+              <option>Electronics</option>
+              <option>Furniture</option>
+              <option>Clothing</option>
+              <option>Stationery</option>
+              <option>Sports</option>
+            </select>
+          </label>
+          <label
+            >Type
+            <select id="fType" onchange="showPrice()">
+              <option value="Swap">Swap</option>
+              <option value="Sell">Sell</option>
+            </select>
+          </label>
+          <label id="priceRow" hidden
+            >Price (₹)<input
+              type="number"
+              id="fPrice"
+              min="1"
+              placeholder="e.g. 250"
+          /></label>
+          <label
+            >Condition
+            <select id="fCond">
+              <option>Like new</option>
+              <option>Good</option>
+              <option>Fair</option>
+            </select>
+          </label>
+          <label
+            >Photo<input type="file" id="fPhoto" accept="image/*"
+          /></label>
+          <label
+            >Description<textarea
+              id="fDesc"
+              rows="3"
+              placeholder="Short details about the item"
+            ></textarea>
+          </label>
+          <p class="msg" id="formMsg" role="alert"></p>
+          <button type="submit" class="btn">Post item</button>
+        </form>
+        <div>
+          <h3>Your listings</h3>
+          <div class="grid one" id="myGrid"></div>
+          <p class="empty" id="myEmpty">
+            You haven't listed anything yet. Fill in the form to post your first
+            item.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section impact" id="impact">
+      <h2 class="title light">Why SwapSphere</h2>
+      <div class="stats">
+        <div><strong>520+</strong><span>Items reused</span></div>
+        <div><strong>310+</strong><span>Students joined</span></div>
+        <div><strong>45,000+</strong><span>₹ saved by students</span></div>
+      </div>
+      <div class="benefits">
+        <p>💰 Pay less or pay nothing</p>
+        <p>♻️ Cut campus waste</p>
+        <p>🤝 Meet students nearby</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-grid">
+        <div>
+          <h3>SwapSphere</h3>
+          <p>A campus marketplace to swap, sell and find useful items.</p>
+        </div>
+        <div>
+          <h3>Quick links</h3>
+          <a href="#explore">Explore</a><a href="#howitworks">How It Works</a
+          ><a href="#myswaps">List an item</a>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>support@swapsphere.edu</p>
+          <p>Student Centre, Main Campus</p>
+        </div>
+      </div>
+      <p class="copy">
+        &copy; 2026 SwapSphere. Built by students, for students.
+      </p>
+    </footer>
+
+    <!-- CONTACT POP-UP -->
+    <div class="modal" id="contactModal" hidden onclick="closeContact(event)">
+      <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cmTitle">
+        <button class="modal-close" onclick="closeContact()" aria-label="Close">&times;</button>
+        <h3 id="cmTitle">Contact owner</h3>
+        <p class="cm-item" id="cmItem"></p>
+        <p class="cm-info" id="cmInfo"></p>
+        <label
+          >Your message<textarea id="cmMsg" rows="5" oninput="updateContactLinks()"></textarea>
+        </label>
+        <div class="cm-actions">
+          <a class="btn" id="cmEmail" href="#">Send email</a>
+          <a class="btn btn-wa" id="cmWa" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+          <button class="btn btn-ghost" type="button" onclick="copyEmail()">Copy email</button>
+        </div>
+        <p class="msg" id="cmNote"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
